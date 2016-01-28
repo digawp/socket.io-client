@@ -4,6 +4,21 @@ var file = require('gulp-file');
 var istanbul = require('gulp-istanbul');
 var babel = require("gulp-babel");
 var browserify = require('./support/browserify.js');
+var webpack = require('webpack-stream');
+
+// var browserify = require('./support/browserify.js');
+
+gulp.task('build-webpack', function() {
+  return gulp.src('lib/*.js') 
+    .pipe(webpack({
+      entry: './lib/index.js',
+      output: {
+        filename: 'socket.io.js',
+      },
+    }))
+    .pipe(babel())
+    .pipe(gulp.dest('./'));
+});
 
 // By default, individual js files are transformed by babel and exported to /dist
 gulp.task("babel", function () {
