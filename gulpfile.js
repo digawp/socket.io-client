@@ -6,7 +6,7 @@ var babel = require("gulp-babel");
 var browserify = require('./support/browserify.js');
 var webpack = require('webpack-stream');
 
-// var browserify = require('./support/browserify.js');
+var browserify = require('./support/browserify.js');
 
 gulp.task('build-webpack', function() {
   return gulp.src('lib/*.js') 
@@ -16,7 +16,9 @@ gulp.task('build-webpack', function() {
         filename: 'socket.io.js',
       },
     }))
-    .pipe(babel())
+    .pipe(babel({
+      compact: false
+    }))
     .pipe(gulp.dest('./'));
 });
 
