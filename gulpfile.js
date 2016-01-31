@@ -18,6 +18,7 @@ gulp.task('build-webpack', function() {
       },
     }))
     .pipe(babel({
+      presets: ['es2015'],
       compact: false
     }))
     .pipe(gulp.dest('./'));
