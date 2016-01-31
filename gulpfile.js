@@ -4,12 +4,15 @@ var file = require('gulp-file');
 var istanbul = require('gulp-istanbul');
 var babel = require("gulp-babel");
 var webpack = require('webpack-stream');
+var eslint = require('gulp-eslint');
 var exec = require('child_process').exec;
 
 var browserify = require('./support/browserify.js');
 
+gulp.task('default', ['lint', 'build-webpack']);
+
 gulp.task('build-webpack', function() {
-  return gulp.src('lib/*.js') 
+  return gulp.src('lib/*.js')
     .pipe(webpack({
       entry: './lib/index.js',
       output: {
@@ -22,6 +25,12 @@ gulp.task('build-webpack', function() {
         }
     }))
     .pipe(gulp.dest('./'));
+});
+
+gulp.task('lint', function() {
+  return gulp.src(['**/*.js', '!node_modules/**'])
+    .pipe(eslint())
+    .pipe(eslint.format());
 });
 
 gulp.task('build', function(){
