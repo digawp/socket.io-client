@@ -1,11 +1,11 @@
-var gulp = require('gulp');
-var mocha = require('gulp-mocha');
-var file = require('gulp-file');
-var istanbul = require('gulp-istanbul');
-var babel = require("gulp-babel");
-var webpack = require('webpack-stream');
-var eslint = require('gulp-eslint');
-var child = require('child_process');
+const gulp = require('gulp');
+const mocha = require('gulp-mocha');
+const file = require('gulp-file');
+const istanbul = require('gulp-istanbul');
+const webpack = require('webpack-stream');
+const eslint = require('gulp-eslint');
+const child = require('child_process');
+const help = require('gulp-task-listing');
 
 gulp.task('help', help);
 
@@ -49,7 +49,8 @@ gulp.task('webpack', function() {
 gulp.task('lint', function() {
   return gulp.src(['**/*.js', '!node_modules/**'])
       .pipe(eslint())
-      .pipe(eslint.format());
+      .pipe(eslint.format())
+      .pipe(eslint.failAfterError());
 });
 
 ////////////////////////////////////////
