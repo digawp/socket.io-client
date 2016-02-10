@@ -33,7 +33,6 @@
     "babel-preset-react": "6.3.13",
     "babelify": "7.2.0",
     "base64-arraybuffer": "0.1.5",
-    "browserify": "13.0.0",
     "concat-stream": "1.5.1",
     "derequire": "2.0.3",
     "expect.js": "0.3.1",
@@ -51,6 +50,7 @@
     "uglify-js": "2.6.1",
     "webpack-stream": "3.1.0",
     "zuul": "3.9.0",
+    "zuul-builder-webpack": "1.1.0",
     "zuul-ngrok": "3.2.0"
   },
   "scripts": {
